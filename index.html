@@ -8,7 +8,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet.photon.css">
@@ -28,7 +27,6 @@
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
-        <script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -40,8 +38,8 @@
         <script src="data/Tauxdemarchabilit800m_1.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:false, maxZoom:19, minZoom:1
-        }).fitBounds([[45.685996279371565,-73.6593081606844],[45.820119395275405,-73.41410863557701]]);
+            zoomControl:false, maxZoom:12, minZoom:1
+        }).fitBounds([[45.680025835195615,-73.7611215206643],[45.81433442224792,-73.51591027187332]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -130,7 +128,6 @@
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -141,7 +138,7 @@
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
-            maxZoom: 19,
+            maxZoom: 12,
             minNativeZoom: 0,
             maxNativeZoom: 18
         });
