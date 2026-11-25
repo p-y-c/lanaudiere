@@ -822,7 +822,85 @@ function exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule4_eval_expres
 }
 
 
-function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule0_eval_expression(context) {
+function exp_SuperficieIFUduparcleplusfraismoinsde400misochrone_4rule0_eval_expression(context) {
+    // sum_LOG >= 0 AND surface_IFU IS NULL
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  >= 0) && (feature.properties['surface_IFU']  === null));
+    } else {
+        return ((feature['sum_LOG']  >= 0) && (feature['surface_IFU']  === null));
+    }
+}
+
+
+function exp_SuperficieIFUduparcleplusfraismoinsde400misochrone_4rule1_eval_expression(context) {
+    // sum_LOG >= 0 AND surface_IFU >= 0 AND surface_IFU <= 250
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 0) && (feature.properties['surface_IFU']  >= 0)) && (feature.properties['surface_IFU']  <= 250.0));
+    } else {
+        return (((feature['sum_LOG']  >= 0) && (feature['surface_IFU']  >= 0)) && (feature['surface_IFU']  <= 250.0));
+    }
+}
+
+
+function exp_SuperficieIFUduparcleplusfraismoinsde400misochrone_4rule2_eval_expression(context) {
+    // sum_LOG >= 0 AND surface_IFU > 250 AND surface_IFU <= 500
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 0) && (feature.properties['surface_IFU']  > 250.0)) && (feature.properties['surface_IFU']  <= 500.0));
+    } else {
+        return (((feature['sum_LOG']  >= 0) && (feature['surface_IFU']  > 250.0)) && (feature['surface_IFU']  <= 500.0));
+    }
+}
+
+
+function exp_SuperficieIFUduparcleplusfraismoinsde400misochrone_4rule3_eval_expression(context) {
+    // sum_LOG >= 0 AND surface_IFU > 500 AND surface_IFU <= 1500
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 0) && (feature.properties['surface_IFU']  > 500.0)) && (feature.properties['surface_IFU']  <= 1500.0));
+    } else {
+        return (((feature['sum_LOG']  >= 0) && (feature['surface_IFU']  > 500.0)) && (feature['surface_IFU']  <= 1500.0));
+    }
+}
+
+
+function exp_SuperficieIFUduparcleplusfraismoinsde400misochrone_4rule4_eval_expression(context) {
+    // sum_LOG >= 0 AND surface_IFU > 1500
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  >= 0) && (feature.properties['surface_IFU']  > 1500.0));
+    } else {
+        return ((feature['sum_LOG']  >= 0) && (feature['surface_IFU']  > 1500.0));
+    }
+}
+
+
+function exp_SuperficieIFUduparcleplusfraismoinsde400misochrone_4rule5_eval_expression(context) {
+    // sum_LOG = 0
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (feature.properties['sum_LOG']  == 0);
+    } else {
+        return (feature['sum_LOG']  == 0);
+    }
+}
+
+
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_5rule0_eval_expression(context) {
     // sum_LOG >= 1 AND DES_score <= 55
 
     var feature = context.feature;
@@ -835,7 +913,7 @@ function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule0_eval
 }
 
 
-function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule1_eval_expression(context) {
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_5rule1_eval_expression(context) {
     // sum_LOG >= 1 AND DES_score > 55 AND DES_score <= 80
 
     var feature = context.feature;
@@ -848,7 +926,7 @@ function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule1_eval
 }
 
 
-function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule2_eval_expression(context) {
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_5rule2_eval_expression(context) {
     // sum_LOG >= 1 AND DES_score > 80 AND DES_score < 100
 
     var feature = context.feature;
@@ -861,7 +939,7 @@ function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule2_eval
 }
 
 
-function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule3_eval_expression(context) {
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_5rule3_eval_expression(context) {
     // sum_LOG >= 1 AND DES_score = 100
 
     var feature = context.feature;
@@ -874,7 +952,7 @@ function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule3_eval
 }
 
 
-function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule4_eval_expression(context) {
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_5rule4_eval_expression(context) {
     // sum_LOG = 0 OR sum_LOG IS NULL
 
     var feature = context.feature;
@@ -887,7 +965,7 @@ function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule4_eval
 }
 
 
-function exp_Diversitdetailledeslogements_5rule0_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule0_eval_expression(context) {
     // sum_LOG = 0 OR sum_LOG IS NULL
 
     var feature = context.feature;
@@ -900,7 +978,7 @@ function exp_Diversitdetailledeslogements_5rule0_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule1_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule1_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -913,7 +991,7 @@ function exp_Diversitdetailledeslogements_5rule1_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule2_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule2_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr < 20
 
     var feature = context.feature;
@@ -926,7 +1004,7 @@ function exp_Diversitdetailledeslogements_5rule2_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule3_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule3_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -939,7 +1017,7 @@ function exp_Diversitdetailledeslogements_5rule3_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule4_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule4_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -952,7 +1030,7 @@ function exp_Diversitdetailledeslogements_5rule4_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule5_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule5_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr < 20
 
     var feature = context.feature;
@@ -965,7 +1043,7 @@ function exp_Diversitdetailledeslogements_5rule5_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule6_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule6_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr < 20
 
     var feature = context.feature;
@@ -978,7 +1056,7 @@ function exp_Diversitdetailledeslogements_5rule6_eval_expression(context) {
 }
 
 
-function exp_Diversitdetailledeslogements_5rule7_eval_expression(context) {
+function exp_Diversitdetailledeslogements_6rule7_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -991,7 +1069,7 @@ function exp_Diversitdetailledeslogements_5rule7_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule0_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule0_eval_expression(context) {
     // sum_LOG = 0 OR sum_LOG IS NULL
 
     var feature = context.feature;
@@ -1004,7 +1082,7 @@ function exp_Tauxdemnageslocataires_6rule0_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule1_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule1_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire < 10
 
     var feature = context.feature;
@@ -1017,7 +1095,7 @@ function exp_Tauxdemnageslocataires_6rule1_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule2_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule2_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 10 AND tx_locataire < 20
 
     var feature = context.feature;
@@ -1030,7 +1108,7 @@ function exp_Tauxdemnageslocataires_6rule2_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule3_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule3_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 20 AND tx_locataire < 30
 
     var feature = context.feature;
@@ -1043,7 +1121,7 @@ function exp_Tauxdemnageslocataires_6rule3_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule4_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule4_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 30 AND tx_locataire < 40
 
     var feature = context.feature;
@@ -1056,7 +1134,7 @@ function exp_Tauxdemnageslocataires_6rule4_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule5_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule5_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 40 AND tx_locataire < 50
 
     var feature = context.feature;
@@ -1069,7 +1147,7 @@ function exp_Tauxdemnageslocataires_6rule5_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule6_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule6_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 50
 
     var feature = context.feature;
@@ -1082,7 +1160,7 @@ function exp_Tauxdemnageslocataires_6rule6_eval_expression(context) {
 }
 
 
-function exp_Tauxvoiriemarchablepondr800misochrone_7rule0_eval_expression(context) {
+function exp_Tauxvoiriemarchablepondr800misochrone_8rule0_eval_expression(context) {
     // MOB_taux_voies_marchables <= 25
 
     var feature = context.feature;
@@ -1095,7 +1173,7 @@ function exp_Tauxvoiriemarchablepondr800misochrone_7rule0_eval_expression(contex
 }
 
 
-function exp_Tauxvoiriemarchablepondr800misochrone_7rule1_eval_expression(context) {
+function exp_Tauxvoiriemarchablepondr800misochrone_8rule1_eval_expression(context) {
     // MOB_taux_voies_marchables > 25 AND MOB_taux_voies_marchables <= 50
 
     var feature = context.feature;
@@ -1108,7 +1186,7 @@ function exp_Tauxvoiriemarchablepondr800misochrone_7rule1_eval_expression(contex
 }
 
 
-function exp_Tauxvoiriemarchablepondr800misochrone_7rule2_eval_expression(context) {
+function exp_Tauxvoiriemarchablepondr800misochrone_8rule2_eval_expression(context) {
     // MOB_taux_voies_marchables > 50 AND MOB_taux_voies_marchables <= 70
 
     var feature = context.feature;
@@ -1121,7 +1199,7 @@ function exp_Tauxvoiriemarchablepondr800misochrone_7rule2_eval_expression(contex
 }
 
 
-function exp_Tauxvoiriemarchablepondr800misochrone_7rule3_eval_expression(context) {
+function exp_Tauxvoiriemarchablepondr800misochrone_8rule3_eval_expression(context) {
     // MOB_taux_voies_marchables > 70 AND MOB_taux_voies_marchables <= 90
 
     var feature = context.feature;
@@ -1134,7 +1212,7 @@ function exp_Tauxvoiriemarchablepondr800misochrone_7rule3_eval_expression(contex
 }
 
 
-function exp_Tauxvoiriemarchablepondr800misochrone_7rule4_eval_expression(context) {
+function exp_Tauxvoiriemarchablepondr800misochrone_8rule4_eval_expression(context) {
     // MOB_taux_voies_marchables > 90
 
     var feature = context.feature;
