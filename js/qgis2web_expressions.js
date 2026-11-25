@@ -757,66 +757,391 @@ function fnc_project_color(values, context) {
 
 
 
-function exp_Tauxdemarchabilit800m_1rule0_eval_expression(context) {
-    // sum_LOG > 0 AND taux_800_buffcentro <= 0.25
+function exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule0_eval_expression(context) {
+    // sum_LOG >= 0 AND _mean <= 0.29999999999999999
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.properties['sum_LOG']  > 0) && (feature.properties['taux_800_buffcentro']  <= 0.25));
+        return ((feature.properties['sum_LOG']  >= 0) && (feature.properties['_mean']  <= 0.3));
     } else {
-        return ((feature['sum_LOG']  > 0) && (feature['taux_800_buffcentro']  <= 0.25));
+        return ((feature['sum_LOG']  >= 0) && (feature['_mean']  <= 0.3));
     }
 }
 
 
-function exp_Tauxdemarchabilit800m_1rule1_eval_expression(context) {
-    // sum_LOG > 0 AND taux_800_buffcentro > 0.25 AND taux_800_buffcentro <= 0.5
+function exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule1_eval_expression(context) {
+    // sum_LOG >= 0 AND (_mean > 0.29999999999999999 AND _mean <= 0.59999999999999998)
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.properties['sum_LOG']  > 0) && (feature.properties['taux_800_buffcentro']  > 0.25)) && (feature.properties['taux_800_buffcentro']  <= 0.5));
+        return ((feature.properties['sum_LOG']  >= 0) && ((feature.properties['_mean']  > 0.3) && (feature.properties['_mean']  <= 0.6)));
     } else {
-        return (((feature['sum_LOG']  > 0) && (feature['taux_800_buffcentro']  > 0.25)) && (feature['taux_800_buffcentro']  <= 0.5));
+        return ((feature['sum_LOG']  >= 0) && ((feature['_mean']  > 0.3) && (feature['_mean']  <= 0.6)));
     }
 }
 
 
-function exp_Tauxdemarchabilit800m_1rule2_eval_expression(context) {
-    // sum_LOG > 0 AND taux_800_buffcentro > 0.5 AND taux_800_buffcentro <= 0.69999999999999996
+function exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule2_eval_expression(context) {
+    // sum_LOG >= 0 AND (_mean > 0.59999999999999998 AND _mean <= 0.69999999999999996)
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.properties['sum_LOG']  > 0) && (feature.properties['taux_800_buffcentro']  > 0.5)) && (feature.properties['taux_800_buffcentro']  <= 0.7));
+        return ((feature.properties['sum_LOG']  >= 0) && ((feature.properties['_mean']  > 0.6) && (feature.properties['_mean']  <= 0.7)));
     } else {
-        return (((feature['sum_LOG']  > 0) && (feature['taux_800_buffcentro']  > 0.5)) && (feature['taux_800_buffcentro']  <= 0.7));
+        return ((feature['sum_LOG']  >= 0) && ((feature['_mean']  > 0.6) && (feature['_mean']  <= 0.7)));
     }
 }
 
 
-function exp_Tauxdemarchabilit800m_1rule3_eval_expression(context) {
-    // sum_LOG > 0 AND taux_800_buffcentro > 0.69999999999999996 AND taux_800_buffcentro <= 0.90000000000000002
+function exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule3_eval_expression(context) {
+    // sum_LOG >= 0 AND _mean > 0.69999999999999996
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.properties['sum_LOG']  > 0) && (feature.properties['taux_800_buffcentro']  > 0.7)) && (feature.properties['taux_800_buffcentro']  <= 0.9));
+        return ((feature.properties['sum_LOG']  >= 0) && (feature.properties['_mean']  > 0.7));
     } else {
-        return (((feature['sum_LOG']  > 0) && (feature['taux_800_buffcentro']  > 0.7)) && (feature['taux_800_buffcentro']  <= 0.9));
+        return ((feature['sum_LOG']  >= 0) && (feature['_mean']  > 0.7));
     }
 }
 
 
-function exp_Tauxdemarchabilit800m_1rule4_eval_expression(context) {
-    // sum_LOG > 0 AND taux_800_buffcentro > 0.90000000000000002
+function exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule4_eval_expression(context) {
+    // sum_LOG = 0
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.properties['sum_LOG']  > 0) && (feature.properties['taux_800_buffcentro']  > 0.9));
+        return (feature.properties['sum_LOG']  == 0);
     } else {
-        return ((feature['sum_LOG']  > 0) && (feature['taux_800_buffcentro']  > 0.9));
+        return (feature['sum_LOG']  == 0);
+    }
+}
+
+
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule0_eval_expression(context) {
+    // sum_LOG >= 1 AND DES_score <= 55
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  >= 1) && (feature.properties['DES_score']  <= 55));
+    } else {
+        return ((feature['sum_LOG']  >= 1) && (feature['DES_score']  <= 55));
+    }
+}
+
+
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule1_eval_expression(context) {
+    // sum_LOG >= 1 AND DES_score > 55 AND DES_score <= 80
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 1) && (feature.properties['DES_score']  > 55)) && (feature.properties['DES_score']  <= 80));
+    } else {
+        return (((feature['sum_LOG']  >= 1) && (feature['DES_score']  > 55)) && (feature['DES_score']  <= 80));
+    }
+}
+
+
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule2_eval_expression(context) {
+    // sum_LOG >= 1 AND DES_score > 80 AND DES_score < 100
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 1) && (feature.properties['DES_score']  > 80)) && (feature.properties['DES_score']  < 100));
+    } else {
+        return (((feature['sum_LOG']  >= 1) && (feature['DES_score']  > 80)) && (feature['DES_score']  < 100));
+    }
+}
+
+
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule3_eval_expression(context) {
+    // sum_LOG >= 1 AND DES_score = 100
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  >= 1) && (feature.properties['DES_score']  == 100));
+    } else {
+        return ((feature['sum_LOG']  >= 1) && (feature['DES_score']  == 100));
+    }
+}
+
+
+function exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule4_eval_expression(context) {
+    // sum_LOG = 0 OR sum_LOG IS NULL
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  == 0) || (feature.properties['sum_LOG']  === null));
+    } else {
+        return ((feature['sum_LOG']  == 0) || (feature['sum_LOG']  === null));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule0_eval_expression(context) {
+    // sum_LOG = 0 OR sum_LOG IS NULL
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  == 0) || (feature.properties['sum_LOG']  === null));
+    } else {
+        return ((feature['sum_LOG']  == 0) || (feature['sum_LOG']  === null));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule1_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr >= 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  >= 20)) && (feature.properties['tx_2_chmbr']  >= 20)) && (feature.properties['tx_3p_chmbr']  >= 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  >= 20)) && (feature['tx_2_chmbr']  >= 20)) && (feature['tx_3p_chmbr']  >= 20));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule2_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr < 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  >= 20)) && (feature.properties['tx_2_chmbr']  >= 20)) && (feature.properties['tx_3p_chmbr']  < 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  >= 20)) && (feature['tx_2_chmbr']  >= 20)) && (feature['tx_3p_chmbr']  < 20));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule3_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr >= 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  >= 20)) && (feature.properties['tx_2_chmbr']  < 20)) && (feature.properties['tx_3p_chmbr']  >= 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  >= 20)) && (feature['tx_2_chmbr']  < 20)) && (feature['tx_3p_chmbr']  >= 20));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule4_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr >= 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  < 20)) && (feature.properties['tx_2_chmbr']  >= 20)) && (feature.properties['tx_3p_chmbr']  >= 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  < 20)) && (feature['tx_2_chmbr']  >= 20)) && (feature['tx_3p_chmbr']  >= 20));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule5_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr < 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  >= 20)) && (feature.properties['tx_2_chmbr']  < 20)) && (feature.properties['tx_3p_chmbr']  < 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  >= 20)) && (feature['tx_2_chmbr']  < 20)) && (feature['tx_3p_chmbr']  < 20));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule6_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr < 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  < 20)) && (feature.properties['tx_2_chmbr']  >= 20)) && (feature.properties['tx_3p_chmbr']  < 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  < 20)) && (feature['tx_2_chmbr']  >= 20)) && (feature['tx_3p_chmbr']  < 20));
+    }
+}
+
+
+function exp_Diversitdetailledeslogements_5rule7_eval_expression(context) {
+    // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr >= 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_0-1_chmbr']  < 20)) && (feature.properties['tx_2_chmbr']  < 20)) && (feature.properties['tx_3p_chmbr']  >= 20));
+    } else {
+        return ((((feature['sum_LOG']  >= 1) && (feature['tx_0-1_chmbr']  < 20)) && (feature['tx_2_chmbr']  < 20)) && (feature['tx_3p_chmbr']  >= 20));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule0_eval_expression(context) {
+    // sum_LOG = 0 OR sum_LOG IS NULL
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  == 0) || (feature.properties['sum_LOG']  === null));
+    } else {
+        return ((feature['sum_LOG']  == 0) || (feature['sum_LOG']  === null));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule1_eval_expression(context) {
+    // sum_LOG >= 1 AND tx_locataire < 10
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_locataire']  < 10));
+    } else {
+        return ((feature['sum_LOG']  >= 1) && (feature['tx_locataire']  < 10));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule2_eval_expression(context) {
+    // sum_LOG >= 1 AND tx_locataire >= 10 AND tx_locataire < 20
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_locataire']  >= 10)) && (feature.properties['tx_locataire']  < 20));
+    } else {
+        return (((feature['sum_LOG']  >= 1) && (feature['tx_locataire']  >= 10)) && (feature['tx_locataire']  < 20));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule3_eval_expression(context) {
+    // sum_LOG >= 1 AND tx_locataire >= 20 AND tx_locataire < 30
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_locataire']  >= 20)) && (feature.properties['tx_locataire']  < 30));
+    } else {
+        return (((feature['sum_LOG']  >= 1) && (feature['tx_locataire']  >= 20)) && (feature['tx_locataire']  < 30));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule4_eval_expression(context) {
+    // sum_LOG >= 1 AND tx_locataire >= 30 AND tx_locataire < 40
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_locataire']  >= 30)) && (feature.properties['tx_locataire']  < 40));
+    } else {
+        return (((feature['sum_LOG']  >= 1) && (feature['tx_locataire']  >= 30)) && (feature['tx_locataire']  < 40));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule5_eval_expression(context) {
+    // sum_LOG >= 1 AND tx_locataire >= 40 AND tx_locataire < 50
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_locataire']  >= 40)) && (feature.properties['tx_locataire']  < 50));
+    } else {
+        return (((feature['sum_LOG']  >= 1) && (feature['tx_locataire']  >= 40)) && (feature['tx_locataire']  < 50));
+    }
+}
+
+
+function exp_Tauxdemnageslocataires_6rule6_eval_expression(context) {
+    // sum_LOG >= 1 AND tx_locataire >= 50
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['sum_LOG']  >= 1) && (feature.properties['tx_locataire']  >= 50));
+    } else {
+        return ((feature['sum_LOG']  >= 1) && (feature['tx_locataire']  >= 50));
+    }
+}
+
+
+function exp_Tauxvoiriemarchablepondr800misochrone_7rule0_eval_expression(context) {
+    // MOB_taux_voies_marchables <= 25
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (feature.properties['MOB_taux_voies_marchables']  <= 25.0);
+    } else {
+        return (feature['MOB_taux_voies_marchables']  <= 25.0);
+    }
+}
+
+
+function exp_Tauxvoiriemarchablepondr800misochrone_7rule1_eval_expression(context) {
+    // MOB_taux_voies_marchables > 25 AND MOB_taux_voies_marchables <= 50
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['MOB_taux_voies_marchables']  > 25.0) && (feature.properties['MOB_taux_voies_marchables']  <= 50.0));
+    } else {
+        return ((feature['MOB_taux_voies_marchables']  > 25.0) && (feature['MOB_taux_voies_marchables']  <= 50.0));
+    }
+}
+
+
+function exp_Tauxvoiriemarchablepondr800misochrone_7rule2_eval_expression(context) {
+    // MOB_taux_voies_marchables > 50 AND MOB_taux_voies_marchables <= 70
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['MOB_taux_voies_marchables']  > 50.0) && (feature.properties['MOB_taux_voies_marchables']  <= 70.0));
+    } else {
+        return ((feature['MOB_taux_voies_marchables']  > 50.0) && (feature['MOB_taux_voies_marchables']  <= 70.0));
+    }
+}
+
+
+function exp_Tauxvoiriemarchablepondr800misochrone_7rule3_eval_expression(context) {
+    // MOB_taux_voies_marchables > 70 AND MOB_taux_voies_marchables <= 90
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['MOB_taux_voies_marchables']  > 70.0) && (feature.properties['MOB_taux_voies_marchables']  <= 90.0));
+    } else {
+        return ((feature['MOB_taux_voies_marchables']  > 70.0) && (feature['MOB_taux_voies_marchables']  <= 90.0));
+    }
+}
+
+
+function exp_Tauxvoiriemarchablepondr800misochrone_7rule4_eval_expression(context) {
+    // MOB_taux_voies_marchables > 90
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (feature.properties['MOB_taux_voies_marchables']  > 90.0);
+    } else {
+        return (feature['MOB_taux_voies_marchables']  > 90.0);
     }
 }

@@ -19,7 +19,7 @@
             margin: 0;
         }
         </style>
-        <title>Analyse Lanaudière</title>
+        <title>Analyse Lanaudière (Diffusion)</title>
     </head>
     <body>
         <div id="map">
@@ -35,11 +35,19 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/Tauxdemarchabilit800m_1.js"></script>
+        <script src="data/DensitrsidentielleMandres_1.js"></script>
+        <script src="data/SocioeconomiqueIndicededfavorisation_2.js"></script>
+        <script src="data/ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3.js"></script>
+        <script src="data/Indicedaccessibilitdesdestinations1200misochroneMandres_4.js"></script>
+        <script src="data/Diversitdetailledeslogements_5.js"></script>
+        <script src="data/Tauxdemnageslocataires_6.js"></script>
+        <script src="data/Tauxvoiriemarchablepondr800misochrone_7.js"></script>
+        <script src="data/ReseauaccessibleauxpietonsMandres_8.js"></script>
+        <script src="data/LimitesadministrativesPrimtredurbanisation_9.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:12, minZoom:1
-        }).fitBounds([[45.680025835195615,-73.7611215206643],[45.81433442224792,-73.51591027187332]]);
+        }).fitBounds([[45.701522555317055,-73.54686738170223],[45.79876215443707,-73.36275599072603]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -122,7 +130,7 @@
             return this._div;
         };
         title.update = function () {
-            this._div.innerHTML = '<h2>Analyse Lanaudière</h2>';
+            this._div.innerHTML = '<h2>Analyse Lanaudière (Diffusion)</h2>';
         };
         title.addTo(map);
         var zoomControl = L.control.zoom({
@@ -144,15 +152,25 @@
         });
         layer_FonddecarteCarto_0;
         map.addLayer(layer_FonddecarteCarto_0);
-        function pop_Tauxdemarchabilit800m_1(feature, layer) {
+        function pop_DensitrsidentielleMandres_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Densité</th>\
-                        <td class="visible-with-data" id="sum_LOG">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Taux de marchabilité</th>\
-                        <td class="visible-with-data" id="taux_800_buffcentro">' + (feature.properties['taux_800_buffcentro'] !== null ? autolinker.link(String(feature.properties['taux_800_buffcentro']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Point_Coun'] !== null ? autolinker.link(String(feature.properties['Point_Coun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['somme_IGD250'] !== null ? autolinker.link(String(feature.properties['somme_IGD250']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['somme_IGD400'] !== null ? autolinker.link(String(feature.properties['somme_IGD400']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -161,80 +179,851 @@
 			});
 			layer.bindPopup(content, { maxHeight: 400 });
         }
-        function style_Tauxdemarchabilit800m_1_0(feature) {
+
+        function style_DensitrsidentielleMandres_1_0(feature) {
+            if (feature.properties['sum_LOG'] >= 0.000000 && feature.properties['sum_LOG'] <= 0.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,218,218,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 1.000000 && feature.properties['sum_LOG'] <= 10.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,250,219,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 10.000000 && feature.properties['sum_LOG'] <= 15.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,239,194,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 15.000000 && feature.properties['sum_LOG'] <= 20.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,221,158,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 20.000000 && feature.properties['sum_LOG'] <= 25.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(245,196,137,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 25.000000 && feature.properties['sum_LOG'] <= 30.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(245,196,137,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 30.000000 && feature.properties['sum_LOG'] <= 60.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,151,111,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 60.000000 && feature.properties['sum_LOG'] <= 90.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,136,109,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 90.000000 && feature.properties['sum_LOG'] <= 120.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(157,126,109,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['sum_LOG'] >= 120.000000 && feature.properties['sum_LOG'] <= 656.000000 ) {
+                return {
+                pane: 'pane_DensitrsidentielleMandres_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,102,102,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_DensitrsidentielleMandres_1');
+        map.getPane('pane_DensitrsidentielleMandres_1').style.zIndex = 401;
+        map.getPane('pane_DensitrsidentielleMandres_1').style['mix-blend-mode'] = 'normal';
+        var layer_DensitrsidentielleMandres_1 = new L.geoJson(json_DensitrsidentielleMandres_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_DensitrsidentielleMandres_1',
+            layerName: 'layer_DensitrsidentielleMandres_1',
+            pane: 'pane_DensitrsidentielleMandres_1',
+            onEachFeature: pop_DensitrsidentielleMandres_1,
+            style: style_DensitrsidentielleMandres_1_0,
+        });
+        bounds_group.addLayer(layer_DensitrsidentielleMandres_1);
+        map.addLayer(layer_DensitrsidentielleMandres_1);
+        function pop_SocioeconomiqueIndicededfavorisation_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Point_Coun'] !== null ? autolinker.link(String(feature.properties['Point_Coun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IDefComRTS'] !== null ? autolinker.link(String(feature.properties['IDefComRTS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_SocioeconomiqueIndicededfavorisation_2_0(feature) {
+            switch(String(feature.properties['IDefComRTS'])) {
+                case 'C1':
+                    return {
+                pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,161,101,1.0)',
+                interactive: false,
+            }
+                    break;
+                case 'C2':
+                    return {
+                pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,236,176,1.0)',
+                interactive: false,
+            }
+                    break;
+                case 'C3':
+                    return {
+                pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,126,163,1.0)',
+                interactive: false,
+            }
+                    break;
+                case 'C4':
+                    return {
+                pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,133,93,1.0)',
+                interactive: false,
+            }
+                    break;
+                case 'C5':
+                    return {
+                pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,70,130,1.0)',
+                interactive: false,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,204,204,1.0)',
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_SocioeconomiqueIndicededfavorisation_2');
+        map.getPane('pane_SocioeconomiqueIndicededfavorisation_2').style.zIndex = 402;
+        map.getPane('pane_SocioeconomiqueIndicededfavorisation_2').style['mix-blend-mode'] = 'normal';
+        var layer_SocioeconomiqueIndicededfavorisation_2 = new L.geoJson(json_SocioeconomiqueIndicededfavorisation_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_SocioeconomiqueIndicededfavorisation_2',
+            layerName: 'layer_SocioeconomiqueIndicededfavorisation_2',
+            pane: 'pane_SocioeconomiqueIndicededfavorisation_2',
+            onEachFeature: pop_SocioeconomiqueIndicededfavorisation_2,
+            style: style_SocioeconomiqueIndicededfavorisation_2_0,
+        });
+        bounds_group.addLayer(layer_SocioeconomiqueIndicededfavorisation_2);
+        function pop_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Point_Coun'] !== null ? autolinker.link(String(feature.properties['Point_Coun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_mean'] !== null ? autolinker.link(String(feature.properties['_mean']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+        function style_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_0(feature) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_Tauxdemarchabilit800m_1rule0_eval_expression(context)) {
+            if (exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule0_eval_expression(context)) {
                   return {
-                pane: 'pane_Tauxdemarchabilit800m_1',
+                pane: 'pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(247,252,245,0.9019607843137255)',
-                interactive: true,
+                fillColor: 'rgba(145,195,106,1.0)',
+                interactive: false,
             };
                 }
-                else if (exp_Tauxdemarchabilit800m_1rule1_eval_expression(context)) {
+                else if (exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule1_eval_expression(context)) {
                   return {
-                pane: 'pane_Tauxdemarchabilit800m_1',
+                pane: 'pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(201,234,194,0.9019607843137255)',
-                interactive: true,
+                fillColor: 'rgba(245,207,0,1.0)',
+                interactive: false,
             };
                 }
-                else if (exp_Tauxdemarchabilit800m_1rule2_eval_expression(context)) {
+                else if (exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule2_eval_expression(context)) {
                   return {
-                pane: 'pane_Tauxdemarchabilit800m_1',
+                pane: 'pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(123,199,124,0.9019607843137255)',
-                interactive: true,
+                fillColor: 'rgba(255,160,37,1.0)',
+                interactive: false,
             };
                 }
-                else if (exp_Tauxdemarchabilit800m_1rule3_eval_expression(context)) {
+                else if (exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule3_eval_expression(context)) {
                   return {
-                pane: 'pane_Tauxdemarchabilit800m_1',
+                pane: 'pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(42,146,75,0.9019607843137255)',
-                interactive: true,
+                fillColor: 'rgba(255,57,57,1.0)',
+                interactive: false,
             };
                 }
-                else if (exp_Tauxdemarchabilit800m_1rule4_eval_expression(context)) {
+                else if (exp_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3rule4_eval_expression(context)) {
                   return {
-                pane: 'pane_Tauxdemarchabilit800m_1',
+                pane: 'pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(0,68,27,0.9019607843137255)',
-                interactive: true,
+                fillColor: 'rgba(255,255,255,0.7058823529411765)',
+                interactive: false,
             };
                 }
             else {
                 return {fill: false, stroke: false};
             }
         }
-        map.createPane('pane_Tauxdemarchabilit800m_1');
-        map.getPane('pane_Tauxdemarchabilit800m_1').style.zIndex = 401;
-        map.getPane('pane_Tauxdemarchabilit800m_1').style['mix-blend-mode'] = 'normal';
-        var layer_Tauxdemarchabilit800m_1 = new L.geoJson(json_Tauxdemarchabilit800m_1, {
+        map.createPane('pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3');
+        map.getPane('pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3').style.zIndex = 403;
+        map.getPane('pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3').style['mix-blend-mode'] = 'normal';
+        var layer_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3 = new L.geoJson(json_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
+            layerName: 'layer_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
+            pane: 'pane_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3',
+            onEachFeature: pop_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3,
+            style: style_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_0,
+        });
+        bounds_group.addLayer(layer_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3);
+        function pop_Indicedaccessibilitdesdestinations1200misochroneMandres_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Point_Coun'] !== null ? autolinker.link(String(feature.properties['Point_Coun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DES_score'] !== null ? autolinker.link(String(feature.properties['DES_score']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+        function style_Indicedaccessibilitdesdestinations1200misochroneMandres_4_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,1,84,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(49,104,142,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,183,121,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,231,37,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Indicedaccessibilitdesdestinations1200misochroneMandres_4rule4_eval_expression(context)) {
+                  return {
+                pane: 'pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,230,230,0.8)',
+                interactive: false,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4');
+        map.getPane('pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4').style.zIndex = 404;
+        map.getPane('pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4').style['mix-blend-mode'] = 'multiply';
+        var layer_Indicedaccessibilitdesdestinations1200misochroneMandres_4 = new L.geoJson(json_Indicedaccessibilitdesdestinations1200misochroneMandres_4, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+            layerName: 'layer_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+            pane: 'pane_Indicedaccessibilitdesdestinations1200misochroneMandres_4',
+            onEachFeature: pop_Indicedaccessibilitdesdestinations1200misochroneMandres_4,
+            style: style_Indicedaccessibilitdesdestinations1200misochroneMandres_4_0,
+        });
+        bounds_group.addLayer(layer_Indicedaccessibilitdesdestinations1200misochroneMandres_4);
+        function pop_Diversitdetailledeslogements_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Point_Coun'] !== null ? autolinker.link(String(feature.properties['Point_Coun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tx_0-1_chmbr'] !== null ? autolinker.link(String(feature.properties['tx_0-1_chmbr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tx_2_chmbr'] !== null ? autolinker.link(String(feature.properties['tx_2_chmbr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tx_3p_chmbr'] !== null ? autolinker.link(String(feature.properties['tx_3p_chmbr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VERIF_tx_chmbr'] !== null ? autolinker.link(String(feature.properties['VERIF_tx_chmbr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['num_muni'] !== null ? autolinker.link(String(feature.properties['num_muni']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+        function style_Diversitdetailledeslogements_5_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_Diversitdetailledeslogements_5rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,211,211,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,231,37,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,209,81,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,168,132,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule4_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,120,142,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule5_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,68,135,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule6_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,36,117,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Diversitdetailledeslogements_5rule7_eval_expression(context)) {
+                  return {
+                pane: 'pane_Diversitdetailledeslogements_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,1,84,1.0)',
+                interactive: false,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_Diversitdetailledeslogements_5');
+        map.getPane('pane_Diversitdetailledeslogements_5').style.zIndex = 405;
+        map.getPane('pane_Diversitdetailledeslogements_5').style['mix-blend-mode'] = 'normal';
+        var layer_Diversitdetailledeslogements_5 = new L.geoJson(json_Diversitdetailledeslogements_5, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Diversitdetailledeslogements_5',
+            layerName: 'layer_Diversitdetailledeslogements_5',
+            pane: 'pane_Diversitdetailledeslogements_5',
+            onEachFeature: pop_Diversitdetailledeslogements_5,
+            style: style_Diversitdetailledeslogements_5_0,
+        });
+        bounds_group.addLayer(layer_Diversitdetailledeslogements_5);
+        function pop_Tauxdemnageslocataires_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tx_locataire'] !== null ? autolinker.link(String(feature.properties['tx_locataire']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+        function style_Tauxdemnageslocataires_6_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_Tauxdemnageslocataires_6rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,211,211,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxdemnageslocataires_6rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,1,84,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxdemnageslocataires_6rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,68,135,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxdemnageslocataires_6rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,120,142,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxdemnageslocataires_6rule4_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,168,132,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxdemnageslocataires_6rule5_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,209,81,0.8)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxdemnageslocataires_6rule6_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxdemnageslocataires_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,231,37,0.8)',
+                interactive: false,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_Tauxdemnageslocataires_6');
+        map.getPane('pane_Tauxdemnageslocataires_6').style.zIndex = 406;
+        map.getPane('pane_Tauxdemnageslocataires_6').style['mix-blend-mode'] = 'normal';
+        var layer_Tauxdemnageslocataires_6 = new L.geoJson(json_Tauxdemnageslocataires_6, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Tauxdemnageslocataires_6',
+            layerName: 'layer_Tauxdemnageslocataires_6',
+            pane: 'pane_Tauxdemnageslocataires_6',
+            onEachFeature: pop_Tauxdemnageslocataires_6,
+            style: style_Tauxdemnageslocataires_6_0,
+        });
+        bounds_group.addLayer(layer_Tauxdemnageslocataires_6);
+        function pop_Tauxvoiriemarchablepondr800misochrone_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GRID_ID'] !== null ? autolinker.link(String(feature.properties['GRID_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sum_LOG'] !== null ? autolinker.link(String(feature.properties['sum_LOG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Point_Coun'] !== null ? autolinker.link(String(feature.properties['Point_Coun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MOB_taux_voies_marchables'] !== null ? autolinker.link(String(feature.properties['MOB_taux_voies_marchables']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+        function style_Tauxvoiriemarchablepondr800misochrone_7_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_Tauxvoiriemarchablepondr800misochrone_7rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxvoiriemarchablepondr800misochrone_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,1,84,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxvoiriemarchablepondr800misochrone_7rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxvoiriemarchablepondr800misochrone_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(59,82,139,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxvoiriemarchablepondr800misochrone_7rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxvoiriemarchablepondr800misochrone_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(33,144,141,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxvoiriemarchablepondr800misochrone_7rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxvoiriemarchablepondr800misochrone_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,201,99,1.0)',
+                interactive: false,
+            };
+                }
+                else if (exp_Tauxvoiriemarchablepondr800misochrone_7rule4_eval_expression(context)) {
+                  return {
+                pane: 'pane_Tauxvoiriemarchablepondr800misochrone_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,231,37,1.0)',
+                interactive: false,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_Tauxvoiriemarchablepondr800misochrone_7');
+        map.getPane('pane_Tauxvoiriemarchablepondr800misochrone_7').style.zIndex = 407;
+        map.getPane('pane_Tauxvoiriemarchablepondr800misochrone_7').style['mix-blend-mode'] = 'normal';
+        var layer_Tauxvoiriemarchablepondr800misochrone_7 = new L.geoJson(json_Tauxvoiriemarchablepondr800misochrone_7, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Tauxvoiriemarchablepondr800misochrone_7',
+            layerName: 'layer_Tauxvoiriemarchablepondr800misochrone_7',
+            pane: 'pane_Tauxvoiriemarchablepondr800misochrone_7',
+            onEachFeature: pop_Tauxvoiriemarchablepondr800misochrone_7,
+            style: style_Tauxvoiriemarchablepondr800misochrone_7_0,
+        });
+        bounds_group.addLayer(layer_Tauxvoiriemarchablepondr800misochrone_7);
+        function pop_ReseauaccessibleauxpietonsMandres_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['meandres'] !== null ? autolinker.link(String(feature.properties['meandres']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_ReseauaccessibleauxpietonsMandres_8_0() {
+            return {
+                pane: 'pane_ReseauaccessibleauxpietonsMandres_8',
+                opacity: 1,
+                color: 'rgba(94,97,95,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_ReseauaccessibleauxpietonsMandres_8');
+        map.getPane('pane_ReseauaccessibleauxpietonsMandres_8').style.zIndex = 408;
+        map.getPane('pane_ReseauaccessibleauxpietonsMandres_8').style['mix-blend-mode'] = 'normal';
+        var layer_ReseauaccessibleauxpietonsMandres_8 = new L.geoJson(json_ReseauaccessibleauxpietonsMandres_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Tauxdemarchabilit800m_1',
-            layerName: 'layer_Tauxdemarchabilit800m_1',
-            pane: 'pane_Tauxdemarchabilit800m_1',
-            onEachFeature: pop_Tauxdemarchabilit800m_1,
-            style: style_Tauxdemarchabilit800m_1_0,
+            dataVar: 'json_ReseauaccessibleauxpietonsMandres_8',
+            layerName: 'layer_ReseauaccessibleauxpietonsMandres_8',
+            pane: 'pane_ReseauaccessibleauxpietonsMandres_8',
+            onEachFeature: pop_ReseauaccessibleauxpietonsMandres_8,
+            style: style_ReseauaccessibleauxpietonsMandres_8_0,
         });
-        bounds_group.addLayer(layer_Tauxdemarchabilit800m_1);
-        map.addLayer(layer_Tauxdemarchabilit800m_1);
+        bounds_group.addLayer(layer_ReseauaccessibleauxpietonsMandres_8);
+        function pop_LimitesadministrativesPrimtredurbanisation_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nommuncomp'] !== null ? autolinker.link(String(feature.properties['nommuncomp']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_LimitesadministrativesPrimtredurbanisation_9_0() {
+            return {
+                pane: 'pane_LimitesadministrativesPrimtredurbanisation_9',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 6.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_LimitesadministrativesPrimtredurbanisation_9');
+        map.getPane('pane_LimitesadministrativesPrimtredurbanisation_9').style.zIndex = 409;
+        map.getPane('pane_LimitesadministrativesPrimtredurbanisation_9').style['mix-blend-mode'] = 'normal';
+        var layer_LimitesadministrativesPrimtredurbanisation_9 = new L.geoJson(json_LimitesadministrativesPrimtredurbanisation_9, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_LimitesadministrativesPrimtredurbanisation_9',
+            layerName: 'layer_LimitesadministrativesPrimtredurbanisation_9',
+            pane: 'pane_LimitesadministrativesPrimtredurbanisation_9',
+            onEachFeature: pop_LimitesadministrativesPrimtredurbanisation_9,
+            style: style_LimitesadministrativesPrimtredurbanisation_9_0,
+        });
+        bounds_group.addLayer(layer_LimitesadministrativesPrimtredurbanisation_9);
+        map.addLayer(layer_LimitesadministrativesPrimtredurbanisation_9);
         const url = {"Nominatim OSM": "https://nominatim.openstreetmap.org/search?format=geojson&addressdetails=1&",
         "France BAN": "https://api-adresse.data.gouv.fr/search/?"}
         var photonControl = L.control.photon({
@@ -289,7 +1078,20 @@
             }
         });
         var overlaysTree = [
-            {label: 'Taux de marchabilité (800m)<br /><table><tr><td style="text-align: center;"><img src="legend/Tauxdemarchabilit800m_1_00250.png" /></td><td>0 - 0,25</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemarchabilit800m_1_02051.png" /></td><td>0,2 - 0,5</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemarchabilit800m_1_05072.png" /></td><td>0,5 - 0,7</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemarchabilit800m_1_07093.png" /></td><td>0,7 - 0,9</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemarchabilit800m_1_0914.png" /></td><td>0,9 - 1</td></tr></table>', layer: layer_Tauxdemarchabilit800m_1},
+            {label: '<img src="legend/LimitesadministrativesPrimtredurbanisation_9.png" /> Limites administratives — Périmètre d\'urbanisation', layer: layer_LimitesadministrativesPrimtredurbanisation_9},
+        {label: '<b>Mobilité</b>',  selectAllCheckbox: true, children: [
+            {label: '<img src="legend/ReseauaccessibleauxpietonsMandres_8.png" /> Reseau accessible aux pietons (Méandres)', layer: layer_ReseauaccessibleauxpietonsMandres_8},
+            {label: 'Taux voirie marchable pondéré à 800m (isochrone)<br /><table><tr><td style="text-align: center;"><img src="legend/Tauxvoiriemarchablepondr800misochrone_7_Trèsfaible0250.png" /></td><td>Très faible (0 - 25)</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxvoiriemarchablepondr800misochrone_7_Faible25501.png" /></td><td>Faible (25 - 50)</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxvoiriemarchablepondr800misochrone_7_Moyen50702.png" /></td><td>Moyen (50 - 70)</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxvoiriemarchablepondr800misochrone_7_Bon70903.png" /></td><td>Bon (70 - 90)</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxvoiriemarchablepondr800misochrone_7_Optimal901004.png" /></td><td>Optimal (90 - 100)</td></tr></table>', layer: layer_Tauxvoiriemarchablepondr800misochrone_7},]},
+        {label: '<b>Habitation</b>',  selectAllCheckbox: true, children: [
+            {label: 'Taux de ménages locataires<br /><table><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_Aucunlogement0.png" /></td><td>Aucun logement</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_0101.png" /></td><td>0 - 10</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_10202.png" /></td><td>10 - 20</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_20303.png" /></td><td>20 - 30</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_30404.png" /></td><td>30 - 40</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_40505.png" /></td><td>40-50</td></tr><tr><td style="text-align: center;"><img src="legend/Tauxdemnageslocataires_6_501006.png" /></td><td>50 - 100</td></tr></table>', layer: layer_Tauxdemnageslocataires_6},
+            {label: 'Diversité de taille des logements<br /><table><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Sanslogement0.png" /></td><td>Sans logement</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Diversitéoptimale20toutetaille1.png" /></td><td>Diversité optimale (≥ 20% toute taille)</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Manquedegrandslogements3ch2.png" /></td><td>Manque de grands logements (3+ ch.)</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Manquedelogementsmoyens2ch3.png" /></td><td>Manque de logements moyens (2 ch.)</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Manquedepetitslogements01ch4.png" /></td><td>Manque de petits logements (0-1 ch.)</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Majoritairementpetitslogementsmanque2et3ch5.png" /></td><td>Majoritairement petits logements (manque 2 et 3+ ch.)</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Majoritairementmoyenslogementsmanque01et3ch6.png" /></td><td>Majoritairement moyens logements (manque 0-1 et 3+ ch.)</td></tr><tr><td style="text-align: center;"><img src="legend/Diversitdetailledeslogements_5_Majoritairementgrandslogementsmanque01et2ch7.png" /></td><td>Majoritairement grands logements (manque 0-1 et 2 ch.)</td></tr></table>', layer: layer_Diversitdetailledeslogements_5},]},
+        {label: '<b>Destinations</b>',  selectAllCheckbox: true, children: [
+            {label: 'Indice d\'accessibilité des destinations à 1200m (isochrone/Méandres)<br /><table><tr><td style="text-align: center;"><img src="legend/Indicedaccessibilitdesdestinations1200misochroneMandres_4_Faible0550.png" /></td><td>Faible (0-55)</td></tr><tr><td style="text-align: center;"><img src="legend/Indicedaccessibilitdesdestinations1200misochroneMandres_4_Moyen55801.png" /></td><td>Moyen (55-80)</td></tr><tr><td style="text-align: center;"><img src="legend/Indicedaccessibilitdesdestinations1200misochroneMandres_4_Élevé811002.png" /></td><td>Élevé (81-100)</td></tr><tr><td style="text-align: center;"><img src="legend/Indicedaccessibilitdesdestinations1200misochroneMandres_4_Optimal1003.png" /></td><td>Optimal (100)</td></tr><tr><td style="text-align: center;"><img src="legend/Indicedaccessibilitdesdestinations1200misochroneMandres_4_Sanslogement4.png" /></td><td>Sans logement</td></tr></table>', layer: layer_Indicedaccessibilitdesdestinations1200misochroneMandres_4},]},
+        {label: '<b>ICU / Verdissement</b>',  selectAllCheckbox: true, children: [
+            {label: 'ICU pct couvert par classe 8a9 — ICU - % couvert par classe 8 et 9<br /><table><tr><td style="text-align: center;"><img src="legend/ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_300.png" /></td><td>≤ 30%</td></tr><tr><td style="text-align: center;"><img src="legend/ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_30à601.png" /></td><td>> 30 à 60%</td></tr><tr><td style="text-align: center;"><img src="legend/ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_60à702.png" /></td><td>> 60 à 70%</td></tr><tr><td style="text-align: center;"><img src="legend/ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_703.png" /></td><td>> 70%</td></tr><tr><td style="text-align: center;"><img src="legend/ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3_Pasdelogement4.png" /></td><td>Pas de logement</td></tr></table>', layer: layer_ICUpctcouvertparclasse8a9ICUcouvertparclasse8et9_3},]},
+        {label: '<b>Socioéconomique</b>',  selectAllCheckbox: true, children: [
+            {label: 'Socioeconomique — Indice de défavorisation<br /><table><tr><td style="text-align: center;"><img src="legend/SocioeconomiqueIndicededfavorisation_2_ADmatériellementetsocialementtrèsfavorisées0.png" /></td><td>AD matériellement et socialement très favorisées</td></tr><tr><td style="text-align: center;"><img src="legend/SocioeconomiqueIndicededfavorisation_2_ADmoyennes1.png" /></td><td>AD moyennes</td></tr><tr><td style="text-align: center;"><img src="legend/SocioeconomiqueIndicededfavorisation_2_ADsocialementtrèsdéfavorisées2.png" /></td><td>AD socialement très défavorisées</td></tr><tr><td style="text-align: center;"><img src="legend/SocioeconomiqueIndicededfavorisation_2_ADmatériellementtrèsdéfavorisées3.png" /></td><td>AD matériellement très défavorisées</td></tr><tr><td style="text-align: center;"><img src="legend/SocioeconomiqueIndicededfavorisation_2_ADmatériellementetsocialementtrèsdéfavorisées4.png" /></td><td>AD matériellement et socialement très défavorisées</td></tr><tr><td style="text-align: center;"><img src="legend/SocioeconomiqueIndicededfavorisation_2_ADsansindice5.png" /></td><td>AD sans indice</td></tr></table>', layer: layer_SocioeconomiqueIndicededfavorisation_2},]},
+            {label: 'Densité résidentielle (Méandres)<br /><table><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_Aucunlogement0.png" /></td><td>Aucun logement</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_1101.png" /></td><td>1 - 10</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_10152.png" /></td><td>10 - 15</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_15203.png" /></td><td>15 - 20</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_20254.png" /></td><td>20 - 25</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_25305.png" /></td><td>25 - 30</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_30606.png" /></td><td>30 - 60</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_60907.png" /></td><td>60 - 90</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_901208.png" /></td><td>90 - 120</td></tr><tr><td style="text-align: center;"><img src="legend/DensitrsidentielleMandres_1_1206569.png" /></td><td>120 - 656</td></tr></table>', layer: layer_DensitrsidentielleMandres_1},
             {label: "Fond de carte (© Carto)", layer: layer_FonddecarteCarto_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -302,6 +1104,29 @@
         });
         lay.addTo(map);
         setBounds();
+        var i = 0;
+        layer_LimitesadministrativesPrimtredurbanisation_9.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['q2wHide_nommun'] !== null?String('<div style="color: #000000; font-size: 10pt; font-weight: bold; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['q2wHide_nommun']).replace(/\\n/g, '<br>') + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_LimitesadministrativesPrimtredurbanisation_9'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_LimitesadministrativesPrimtredurbanisation_9]);
+        map.on("zoomend", function(){
+            resetLabels([layer_LimitesadministrativesPrimtredurbanisation_9]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_LimitesadministrativesPrimtredurbanisation_9]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_LimitesadministrativesPrimtredurbanisation_9]);
+        });
         </script>        
     </body>
 </html>
