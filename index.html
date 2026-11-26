@@ -75,13 +75,81 @@
         <script src="./layers/layers.js" type="text/javascript"></script> 
         <script src="./resources/Autolinker.min.js"></script>
         <script src="./resources/qgis2web.js"></script>        
-
+<!-- === DÉBUT AJOUT PERSONNALISÉ (MOT DE PASSE + TITRE + MODALE) === -->
 <style>
+  /* Masque de protection par mot de passe */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999; /* Au-dessus de tout */
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  #password-gate.unlocked {
+    display: none;
+  }
+  .gate-box {
+    background: #ffffff;
+    padding: 28px 24px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  }
+  .gate-box h2 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #0f172a;
+  }
+  .gate-box p {
+    margin: 0 0 18px 0;
+    font-size: 14px;
+    color: #64748b;
+  }
+  .gate-form {
+    display: flex;
+    gap: 8px;
+  }
+  .gate-form input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .gate-form input:focus {
+    outline: 2px solid #0f766e;
+    border-color: transparent;
+  }
+  .gate-form button {
+    background: #0f766e;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .gate-form button:hover {
+    background: #115e59;
+  }
+  #gate-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+  }
+
   /* Bandeau de titre discret en haut de la carte */
   #custom-map-header {
     position: fixed;
     top: 12px;
-    left: 55px; /* Laisse la place aux boutons zoom (+/-) de Leaflet/OpenLayers */
+    left: 55px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
     padding: 8px 14px;
@@ -168,13 +236,17 @@
     font-size: 14px;
     line-height: 1.55;
   }
+  .modal-body h2 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+  }
   .modal-body h3 {
     margin: 14px 0 4px 0;
     font-size: 15px;
     color: #0f766e;
-  }
-  .modal-body h3:first-child {
-    margin-top: 0;
   }
   .modal-body p {
     margin: 0 0 8px 0;
@@ -203,13 +275,26 @@
   }
 </style>
 
-<!-- Bandeau supérieur avec le titre et le bouton de réouverture -->
+<!-- 1. Écran de mot de passe -->
+<div id="password-gate">
+  <div class="gate-box">
+    <h2>Accès restreint</h2>
+    <p>Analyse des milieux de vie complets Lanaudière<br>Diagnostic préliminaire</p>
+    <form class="gate-form" id="gate-form">
+      <input type="password" id="gate-input" placeholder="Mot de passe" required autofocus />
+      <button type="submit">Entrer</button>
+    </form>
+    <div id="gate-error">Mot de passe incorrect.</div>
+  </div>
+</div>
+
+<!-- 2. Bandeau supérieur avec le titre et le bouton de réouverture -->
 <div id="custom-map-header">
   <h1>Analyse des milieux de vie complets Lanaudière - Diagnostic préliminaire</h1>
   <button id="btn-open-info" type="button">Voir le descriptif des données</button>
 </div>
 
-<!-- Fenêtre modale affichée au démarrage -->
+<!-- 3. Fenêtre modale affichée au démarrage -->
 <div id="info-modal-backdrop" role="dialog" aria-modal="true">
   <div id="info-modal-box">
     <div class="modal-header">
@@ -217,7 +302,7 @@
       <button class="modal-close-x" id="btn-x-info" type="button" aria-label="Fermer">&times;</button>
     </div>
     <div class="modal-body">
-    <h2> Descriptif des données</h2>
+      <h2>Descriptif des données</h2>
       <h3>Hexagones sans logements</h3>
       <p>Permet d’appliquer un masque blanc transparent pour se concentrer sur les secteurs habités.</p>
 
@@ -255,6 +340,40 @@
 
 <script>
   (function () {
+    // Empreinte SHA-256 du mot de passe 
+    const TARGET_HASH = 'b2a25911a2265f0f0ae18e64a4a8702b1d0dc5c1620ba0adf379f2fd5effb554';
+    const SESSION_KEY = 'lanaudiere_map_unlocked';
+
+    const gate = document.getElementById('password-gate');
+    const gateForm = document.getElementById('gate-form');
+    const gateInput = document.getElementById('gate-input');
+    const gateError = document.getElementById('gate-error');
+
+    async function sha256(text) {
+      const data = new TextEncoder().encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+      gate.classList.add('unlocked');
+    }
+
+    gateForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const enteredHash = await sha256(gateInput.value);
+      if (enteredHash === TARGET_HASH) {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        gate.classList.add('unlocked');
+      } else {
+        gateError.style.display = 'block';
+        gateInput.value = '';
+        gateInput.focus();
+      }
+    });
+
     const modal = document.getElementById('info-modal-backdrop');
     const openBtn = document.getElementById('btn-open-info');
     const closeBtn = document.getElementById('btn-close-info');
@@ -267,17 +386,16 @@
     closeBtn.addEventListener('click', closeModal);
     closeX.addEventListener('click', closeModal);
 
-    // Fermer en cliquant sur le fond sombre autour de la boîte
     modal.addEventListener('click', function (e) {
       if (e.target === modal) closeModal();
     });
 
-    // Fermer avec la touche Échap
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
     });
   })();
 </script>
+<!-- === FIN AJOUT PERSONNALISÉ === -->
 
     </body>
 </html>
