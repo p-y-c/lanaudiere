@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_Superficiedeparcfrais400m_4 = function(feature, resolution){
+var style_Tauxdevoiriemarchablepondr_8 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -23,55 +23,47 @@ var style_Superficiedeparcfrais400m_4 = function(feature, resolution){
         labelText = String("");
     }
     
-        function rules_Superficiedeparcfrais400m_4(feature, value) {
+        function rules_Tauxdevoiriemarchablepondr_8(feature, value) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_Superficiedeparcfrais400m_4rule0_eval_expression(context)) {
+            if (exp_Tauxdevoiriemarchablepondr_8rule0_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(255,255,254,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(68,1,84,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Superficiedeparcfrais400m_4rule1_eval_expression(context)) {
+                    else if (exp_Tauxdevoiriemarchablepondr_8rule1_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(228,250,219,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(59,82,139,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Superficiedeparcfrais400m_4rule2_eval_expression(context)) {
+                    else if (exp_Tauxdevoiriemarchablepondr_8rule2_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(202,235,197,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(33,144,141,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Superficiedeparcfrais400m_4rule3_eval_expression(context)) {
+                    else if (exp_Tauxdevoiriemarchablepondr_8rule3_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(61,167,90,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(93,201,99,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Superficiedeparcfrais400m_4rule4_eval_expression(context)) {
+                    else if (exp_Tauxdevoiriemarchablepondr_8rule4_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(0,68,27,0.8)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-                    }
-                    else if (exp_Superficiedeparcfrais400m_4rule5_eval_expression(context)) {
-                      return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(184,184,184,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(253,231,37,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
@@ -81,7 +73,7 @@ var style_Superficiedeparcfrais400m_4 = function(feature, resolution){
                 return [];
             }
         }
-        var style = rules_Superficiedeparcfrais400m_4(feature, value);
+        var style = rules_Tauxdevoiriemarchablepondr_8(feature, value);
         ;
 
     return style;

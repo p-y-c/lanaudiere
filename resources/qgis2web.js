@@ -12,7 +12,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-8191364.270877, 5733749.326113, -8167650.071770, 5755149.761150], map.getSize());
+map.getView().fit([-8197912.996839, 5728564.480113, -8171718.772305, 5749955.279279], map.getSize());
 
 //change cursor
 function pointerOnFeature(evt) {
@@ -497,17 +497,6 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
 
-var Title = new ol.control.Control({
-    element: (() => {
-        var titleElement = document.createElement('div');
-        titleElement.className = 'top-right-title ol-control';
-        titleElement.innerHTML = '<h2 class="project-title">Analyse Lanaudière (Diffusion)</h2>';
-        return titleElement;
-    })(),
-    target: 'top-right-container'
-});
-map.addControl(Title)
-    
 //abstract
 
 

@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_Accessibilitdesdestinations_8 = function(feature, resolution){
+var style_Accessibilitdesdestinations_9 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -23,13 +23,13 @@ var style_Accessibilitdesdestinations_8 = function(feature, resolution){
         labelText = String("");
     }
     
-        function rules_Accessibilitdesdestinations_8(feature, value) {
+        function rules_Accessibilitdesdestinations_9(feature, value) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_Accessibilitdesdestinations_8rule0_eval_expression(context)) {
+            if (exp_Accessibilitdesdestinations_9rule0_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(68,1,84,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
@@ -37,7 +37,7 @@ var style_Accessibilitdesdestinations_8 = function(feature, resolution){
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Accessibilitdesdestinations_8rule1_eval_expression(context)) {
+                    else if (exp_Accessibilitdesdestinations_9rule1_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(49,104,142,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
@@ -45,7 +45,7 @@ var style_Accessibilitdesdestinations_8 = function(feature, resolution){
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Accessibilitdesdestinations_8rule2_eval_expression(context)) {
+                    else if (exp_Accessibilitdesdestinations_9rule2_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(53,183,121,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
@@ -53,17 +53,9 @@ var style_Accessibilitdesdestinations_8 = function(feature, resolution){
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Accessibilitdesdestinations_8rule3_eval_expression(context)) {
+                    else if (exp_Accessibilitdesdestinations_9rule3_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(253,231,37,0.8)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-                    }
-                    else if (exp_Accessibilitdesdestinations_8rule4_eval_expression(context)) {
-                      return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(230,230,230,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
@@ -73,7 +65,7 @@ var style_Accessibilitdesdestinations_8 = function(feature, resolution){
                 return [];
             }
         }
-        var style = rules_Accessibilitdesdestinations_8(feature, value);
+        var style = rules_Accessibilitdesdestinations_9(feature, value);
         ;
 
     return style;

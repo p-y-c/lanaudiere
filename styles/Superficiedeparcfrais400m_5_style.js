@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_Tauxdemnageslocataires_6 = function(feature, resolution){
+var style_Superficiedeparcfrais400m_5 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -23,63 +23,47 @@ var style_Tauxdemnageslocataires_6 = function(feature, resolution){
         labelText = String("");
     }
     
-        function rules_Tauxdemnageslocataires_6(feature, value) {
+        function rules_Superficiedeparcfrais400m_5(feature, value) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_Tauxdemnageslocataires_6rule0_eval_expression(context)) {
+            if (exp_Superficiedeparcfrais400m_5rule0_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(211,211,211,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(255,255,254,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Tauxdemnageslocataires_6rule1_eval_expression(context)) {
+                    else if (exp_Superficiedeparcfrais400m_5rule1_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(68,1,84,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(228,250,219,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Tauxdemnageslocataires_6rule2_eval_expression(context)) {
+                    else if (exp_Superficiedeparcfrais400m_5rule2_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(65,68,135,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(202,235,197,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Tauxdemnageslocataires_6rule3_eval_expression(context)) {
+                    else if (exp_Superficiedeparcfrais400m_5rule3_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(42,120,142,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(61,167,90,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_Tauxdemnageslocataires_6rule4_eval_expression(context)) {
+                    else if (exp_Superficiedeparcfrais400m_5rule4_eval_expression(context)) {
                       return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(34,168,132,0.8)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-                    }
-                    else if (exp_Tauxdemnageslocataires_6rule5_eval_expression(context)) {
-                      return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(122,209,81,0.8)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-                    }
-                    else if (exp_Tauxdemnageslocataires_6rule6_eval_expression(context)) {
-                      return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(253,231,37,0.8)'}),
+        fill: new ol.style.Fill({color: 'rgba(0,68,27,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
@@ -89,7 +73,7 @@ var style_Tauxdemnageslocataires_6 = function(feature, resolution){
                 return [];
             }
         }
-        var style = rules_Tauxdemnageslocataires_6(feature, value);
+        var style = rules_Superficiedeparcfrais400m_5(feature, value);
         ;
 
     return style;

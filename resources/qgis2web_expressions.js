@@ -766,72 +766,59 @@ function fnc_project_color(values, context) {
 
 
 
-function exp_lotsdechaleursurbains_3rule0_eval_expression(context) {
-    // sum_LOG >= 0 AND ICU_mean <= 0.29999999999999999
+function exp_lotsdechaleursurbains_4rule0_eval_expression(context) {
+    // ICU_mean <= 0.29999999999999999
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.get('sum_LOG')  >= 0) && (feature.get('ICU_mean')  <= 0.3));
+        return (feature.get('ICU_mean')  <= 0.3);
     } else {
-        return ((feature.get('sum_LOG')  >= 0) && (feature.get('ICU_mean')  <= 0.3));
+        return (feature.get('ICU_mean')  <= 0.3);
     }
 }
 
 
-function exp_lotsdechaleursurbains_3rule1_eval_expression(context) {
-    // sum_LOG >= 0 AND (ICU_mean > 0.29999999999999999 AND ICU_mean <= 0.59999999999999998)
+function exp_lotsdechaleursurbains_4rule1_eval_expression(context) {
+    // ICU_mean > 0.29999999999999999 AND ICU_mean <= 0.59999999999999998
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.get('sum_LOG')  >= 0) && ((feature.get('ICU_mean')  > 0.3) && (feature.get('ICU_mean')  <= 0.6)));
+        return ((feature.get('ICU_mean')  > 0.3) && (feature.get('ICU_mean')  <= 0.6));
     } else {
-        return ((feature.get('sum_LOG')  >= 0) && ((feature.get('ICU_mean')  > 0.3) && (feature.get('ICU_mean')  <= 0.6)));
+        return ((feature.get('ICU_mean')  > 0.3) && (feature.get('ICU_mean')  <= 0.6));
     }
 }
 
 
-function exp_lotsdechaleursurbains_3rule2_eval_expression(context) {
-    // sum_LOG >= 0 AND (ICU_mean > 0.59999999999999998 AND ICU_mean <= 0.69999999999999996)
+function exp_lotsdechaleursurbains_4rule2_eval_expression(context) {
+    // ICU_mean > 0.59999999999999998 AND ICU_mean <= 0.69999999999999996
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.get('sum_LOG')  >= 0) && ((feature.get('ICU_mean')  > 0.6) && (feature.get('ICU_mean')  <= 0.7)));
+        return ((feature.get('ICU_mean')  > 0.6) && (feature.get('ICU_mean')  <= 0.7));
     } else {
-        return ((feature.get('sum_LOG')  >= 0) && ((feature.get('ICU_mean')  > 0.6) && (feature.get('ICU_mean')  <= 0.7)));
+        return ((feature.get('ICU_mean')  > 0.6) && (feature.get('ICU_mean')  <= 0.7));
     }
 }
 
 
-function exp_lotsdechaleursurbains_3rule3_eval_expression(context) {
-    // sum_LOG >= 0 AND ICU_mean > 0.69999999999999996
+function exp_lotsdechaleursurbains_4rule3_eval_expression(context) {
+    // ICU_mean > 0.69999999999999996
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.get('sum_LOG')  >= 0) && (feature.get('ICU_mean')  > 0.7));
+        return (feature.get('ICU_mean')  > 0.7);
     } else {
-        return ((feature.get('sum_LOG')  >= 0) && (feature.get('ICU_mean')  > 0.7));
+        return (feature.get('ICU_mean')  > 0.7);
     }
 }
 
 
-function exp_lotsdechaleursurbains_3rule4_eval_expression(context) {
-    // sum_LOG = 0
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.get('sum_LOG')  == 0);
-    } else {
-        return (feature.get('sum_LOG')  == 0);
-    }
-}
-
-
-function exp_Superficiedeparcfrais400m_4rule0_eval_expression(context) {
+function exp_Superficiedeparcfrais400m_5rule0_eval_expression(context) {
     // sum_LOG >= 0 AND surface_IFU IS NULL
 
     var feature = context.feature;
@@ -844,7 +831,7 @@ function exp_Superficiedeparcfrais400m_4rule0_eval_expression(context) {
 }
 
 
-function exp_Superficiedeparcfrais400m_4rule1_eval_expression(context) {
+function exp_Superficiedeparcfrais400m_5rule1_eval_expression(context) {
     // sum_LOG >= 0 AND surface_IFU >= 0 AND surface_IFU <= 250
 
     var feature = context.feature;
@@ -857,7 +844,7 @@ function exp_Superficiedeparcfrais400m_4rule1_eval_expression(context) {
 }
 
 
-function exp_Superficiedeparcfrais400m_4rule2_eval_expression(context) {
+function exp_Superficiedeparcfrais400m_5rule2_eval_expression(context) {
     // sum_LOG >= 0 AND surface_IFU > 250 AND surface_IFU <= 500
 
     var feature = context.feature;
@@ -870,7 +857,7 @@ function exp_Superficiedeparcfrais400m_4rule2_eval_expression(context) {
 }
 
 
-function exp_Superficiedeparcfrais400m_4rule3_eval_expression(context) {
+function exp_Superficiedeparcfrais400m_5rule3_eval_expression(context) {
     // sum_LOG >= 0 AND surface_IFU > 500 AND surface_IFU <= 1500
 
     var feature = context.feature;
@@ -883,7 +870,7 @@ function exp_Superficiedeparcfrais400m_4rule3_eval_expression(context) {
 }
 
 
-function exp_Superficiedeparcfrais400m_4rule4_eval_expression(context) {
+function exp_Superficiedeparcfrais400m_5rule4_eval_expression(context) {
     // sum_LOG >= 0 AND surface_IFU > 1500
 
     var feature = context.feature;
@@ -896,20 +883,7 @@ function exp_Superficiedeparcfrais400m_4rule4_eval_expression(context) {
 }
 
 
-function exp_Superficiedeparcfrais400m_4rule5_eval_expression(context) {
-    // sum_LOG = 0
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.get('sum_LOG')  == 0);
-    } else {
-        return (feature.get('sum_LOG')  == 0);
-    }
-}
-
-
-function exp_Diversitdelogementselonlenombredechambres_5rule0_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule0_eval_expression(context) {
     // sum_LOG = 0 OR sum_LOG IS NULL
 
     var feature = context.feature;
@@ -922,7 +896,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule0_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule1_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule1_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -935,7 +909,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule1_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule2_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule2_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr < 20
 
     var feature = context.feature;
@@ -948,7 +922,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule2_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule3_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule3_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -961,7 +935,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule3_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule4_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule4_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -974,7 +948,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule4_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule5_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule5_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" >= 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr < 20
 
     var feature = context.feature;
@@ -987,7 +961,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule5_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule6_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule6_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr >= 20 AND tx_3p_chmbr < 20
 
     var feature = context.feature;
@@ -1000,7 +974,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule6_eval_expression(co
 }
 
 
-function exp_Diversitdelogementselonlenombredechambres_5rule7_eval_expression(context) {
+function exp_Diversitdelogementselonlenombredechambres_6rule7_eval_expression(context) {
     // sum_LOG >= 1 AND "tx_0-1_chmbr" < 20 AND tx_2_chmbr < 20 AND tx_3p_chmbr >= 20
 
     var feature = context.feature;
@@ -1013,7 +987,7 @@ function exp_Diversitdelogementselonlenombredechambres_5rule7_eval_expression(co
 }
 
 
-function exp_Tauxdemnageslocataires_6rule0_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule0_eval_expression(context) {
     // sum_LOG = 0 OR sum_LOG IS NULL
 
     var feature = context.feature;
@@ -1026,7 +1000,7 @@ function exp_Tauxdemnageslocataires_6rule0_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule1_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule1_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire < 10
 
     var feature = context.feature;
@@ -1039,7 +1013,7 @@ function exp_Tauxdemnageslocataires_6rule1_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule2_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule2_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 10 AND tx_locataire < 20
 
     var feature = context.feature;
@@ -1052,7 +1026,7 @@ function exp_Tauxdemnageslocataires_6rule2_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule3_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule3_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 20 AND tx_locataire < 30
 
     var feature = context.feature;
@@ -1065,7 +1039,7 @@ function exp_Tauxdemnageslocataires_6rule3_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule4_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule4_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 30 AND tx_locataire < 40
 
     var feature = context.feature;
@@ -1078,7 +1052,7 @@ function exp_Tauxdemnageslocataires_6rule4_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule5_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule5_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 40 AND tx_locataire < 50
 
     var feature = context.feature;
@@ -1091,7 +1065,7 @@ function exp_Tauxdemnageslocataires_6rule5_eval_expression(context) {
 }
 
 
-function exp_Tauxdemnageslocataires_6rule6_eval_expression(context) {
+function exp_Tauxdemnageslocataires_7rule6_eval_expression(context) {
     // sum_LOG >= 1 AND tx_locataire >= 50
 
     var feature = context.feature;
@@ -1104,7 +1078,7 @@ function exp_Tauxdemnageslocataires_6rule6_eval_expression(context) {
 }
 
 
-function exp_Tauxdevoiriemarchablepondr_7rule0_eval_expression(context) {
+function exp_Tauxdevoiriemarchablepondr_8rule0_eval_expression(context) {
     // MOB_taux_voies_marchables <= 25
 
     var feature = context.feature;
@@ -1117,7 +1091,7 @@ function exp_Tauxdevoiriemarchablepondr_7rule0_eval_expression(context) {
 }
 
 
-function exp_Tauxdevoiriemarchablepondr_7rule1_eval_expression(context) {
+function exp_Tauxdevoiriemarchablepondr_8rule1_eval_expression(context) {
     // MOB_taux_voies_marchables > 25 AND MOB_taux_voies_marchables <= 50
 
     var feature = context.feature;
@@ -1130,7 +1104,7 @@ function exp_Tauxdevoiriemarchablepondr_7rule1_eval_expression(context) {
 }
 
 
-function exp_Tauxdevoiriemarchablepondr_7rule2_eval_expression(context) {
+function exp_Tauxdevoiriemarchablepondr_8rule2_eval_expression(context) {
     // MOB_taux_voies_marchables > 50 AND MOB_taux_voies_marchables <= 70
 
     var feature = context.feature;
@@ -1143,7 +1117,7 @@ function exp_Tauxdevoiriemarchablepondr_7rule2_eval_expression(context) {
 }
 
 
-function exp_Tauxdevoiriemarchablepondr_7rule3_eval_expression(context) {
+function exp_Tauxdevoiriemarchablepondr_8rule3_eval_expression(context) {
     // MOB_taux_voies_marchables > 70 AND MOB_taux_voies_marchables <= 90
 
     var feature = context.feature;
@@ -1156,7 +1130,7 @@ function exp_Tauxdevoiriemarchablepondr_7rule3_eval_expression(context) {
 }
 
 
-function exp_Tauxdevoiriemarchablepondr_7rule4_eval_expression(context) {
+function exp_Tauxdevoiriemarchablepondr_8rule4_eval_expression(context) {
     // MOB_taux_voies_marchables > 90
 
     var feature = context.feature;
@@ -1169,59 +1143,59 @@ function exp_Tauxdevoiriemarchablepondr_7rule4_eval_expression(context) {
 }
 
 
-function exp_Accessibilitdesdestinations_8rule0_eval_expression(context) {
-    // sum_LOG >= 1 AND DES_score <= 55
+function exp_Accessibilitdesdestinations_9rule0_eval_expression(context) {
+    // sum_LOG >= 0 AND DES_score <= 55
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  <= 55));
+        return ((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  <= 55));
     } else {
-        return ((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  <= 55));
+        return ((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  <= 55));
     }
 }
 
 
-function exp_Accessibilitdesdestinations_8rule1_eval_expression(context) {
-    // sum_LOG >= 1 AND DES_score > 55 AND DES_score <= 80
+function exp_Accessibilitdesdestinations_9rule1_eval_expression(context) {
+    // sum_LOG >= 0 AND DES_score > 55 AND DES_score <= 80
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  > 55)) && (feature.get('DES_score')  <= 80));
+        return (((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  > 55)) && (feature.get('DES_score')  <= 80));
     } else {
-        return (((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  > 55)) && (feature.get('DES_score')  <= 80));
+        return (((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  > 55)) && (feature.get('DES_score')  <= 80));
     }
 }
 
 
-function exp_Accessibilitdesdestinations_8rule2_eval_expression(context) {
-    // sum_LOG >= 1 AND DES_score > 80 AND DES_score < 100
+function exp_Accessibilitdesdestinations_9rule2_eval_expression(context) {
+    // sum_LOG >= 0 AND DES_score > 80 AND DES_score < 100
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  > 80)) && (feature.get('DES_score')  < 100));
+        return (((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  > 80)) && (feature.get('DES_score')  < 100));
     } else {
-        return (((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  > 80)) && (feature.get('DES_score')  < 100));
+        return (((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  > 80)) && (feature.get('DES_score')  < 100));
     }
 }
 
 
-function exp_Accessibilitdesdestinations_8rule3_eval_expression(context) {
-    // sum_LOG >= 1 AND DES_score = 100
+function exp_Accessibilitdesdestinations_9rule3_eval_expression(context) {
+    // sum_LOG >= 0 AND DES_score = 100
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  == 100));
+        return ((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  == 100));
     } else {
-        return ((feature.get('sum_LOG')  >= 1) && (feature.get('DES_score')  == 100));
+        return ((feature.get('sum_LOG')  >= 0) && (feature.get('DES_score')  == 100));
     }
 }
 
 
-function exp_Accessibilitdesdestinations_8rule4_eval_expression(context) {
+function exp_Hexagonessanslogement_10rule0_eval_expression(context) {
     // sum_LOG = 0 OR sum_LOG IS NULL
 
     var feature = context.feature;

@@ -58,9 +58,226 @@
         <script src="./resources/ol-layerswitcher.js"></script>
         <script src="resources/photon-geocoder-autocomplete.min.js"></script>
         <script src="resources/olms.js"></script>
-<script src="layers/Densitrsidentielle_1.js"></script>        <script src="styles/Densitrsidentielle_1_style.js"></script><script src="styles/Indicededfavorisation_2_style.js"></script><script src="styles/lotsdechaleursurbains_3_style.js"></script><script src="styles/Superficiedeparcfrais400m_4_style.js"></script><script src="styles/Diversitdelogementselonlenombredechambres_5_style.js"></script><script src="styles/Tauxdemnageslocataires_6_style.js"></script><script src="styles/Tauxdevoiriemarchablepondr_7_style.js"></script><script src="styles/Accessibilitdesdestinations_8_style.js"></script>
+        <script src="layers/Densitrsidentielle_2.js"></script>
+		<script src="layers/Primtresdurbanisation_11.js"></script>
+		<script src="layers/RseaudemarcheMandres_12.js"></script>
+        <script src="styles/Densitrsidentielle_2_style.js"></script>
+		<script src="styles/Indicededfavorisation_3_style.js"></script>
+		<script src="styles/lotsdechaleursurbains_4_style.js"></script>
+		<script src="styles/Superficiedeparcfrais400m_5_style.js"></script>
+		<script src="styles/Diversitdelogementselonlenombredechambres_6_style.js"></script>
+		<script src="styles/Tauxdemnageslocataires_7_style.js"></script>
+		<script src="styles/Tauxdevoiriemarchablepondr_8_style.js"></script>
+		<script src="styles/Accessibilitdesdestinations_9_style.js"></script>
+		<script src="styles/Hexagonessanslogement_10_style.js"></script>
+		<script src="styles/Primtresdurbanisation_11_style.js"></script>
+		<script src="styles/RseaudemarcheMandres_12_style.js"></script>
         <script src="./layers/layers.js" type="text/javascript"></script> 
         <script src="./resources/Autolinker.min.js"></script>
         <script src="./resources/qgis2web.js"></script>        
+
+<style>
+  /* Bandeau de titre discret en haut de la carte */
+  #custom-map-header {
+    position: fixed;
+    top: 12px;
+    left: 55px; /* Laisse la place aux boutons zoom (+/-) de Leaflet/OpenLayers */
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 14px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: calc(100vw - 120px);
+  }
+  #custom-map-header h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  #btn-open-info {
+    background: #0f766e;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  #btn-open-info:hover {
+    background: #115e59;
+  }
+
+  /* Fenêtre modale d'accueil */
+  #info-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(15, 23, 42, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  #info-modal-backdrop.hidden {
+    display: none;
+  }
+  #info-modal-box {
+    background: #ffffff;
+    color: #334155;
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+  }
+  .modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #0f172a;
+  }
+  .modal-close-x {
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+  }
+  .modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .modal-body h3 {
+    margin: 14px 0 4px 0;
+    font-size: 15px;
+    color: #0f766e;
+  }
+  .modal-body h3:first-child {
+    margin-top: 0;
+  }
+  .modal-body p {
+    margin: 0 0 8px 0;
+  }
+  .modal-body ul {
+    margin: 4px 0 10px 0;
+    padding-left: 20px;
+  }
+  .modal-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #e2e8f0;
+    text-align: right;
+    background: #f8fafc;
+  }
+  #btn-close-info {
+    background: #0f766e;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #btn-close-info:hover {
+    background: #115e59;
+  }
+</style>
+
+<!-- Bandeau supérieur avec le titre et le bouton de réouverture -->
+<div id="custom-map-header">
+  <h1>Analyse des milieux de vie complets Lanaudière - Diagnostic préliminaire</h1>
+  <button id="btn-open-info" type="button">Voir le descriptif des données</button>
+</div>
+
+<!-- Fenêtre modale affichée au démarrage -->
+<div id="info-modal-backdrop" role="dialog" aria-modal="true">
+  <div id="info-modal-box">
+    <div class="modal-header">
+      <h2>Analyse des milieux de vie complets Lanaudière - Diagnostic préliminaire</h2>
+      <button class="modal-close-x" id="btn-x-info" type="button" aria-label="Fermer">&times;</button>
+    </div>
+    <div class="modal-body">
+    <h2> Descriptif des données</h2>
+      <h3>Hexagones sans logements</h3>
+      <p>Permet d’appliquer un masque blanc transparent pour se concentrer sur les secteurs habités.</p>
+
+      <h3>Accessibilité des destinations</h3>
+      <p>Score de 0 à 100, basé sur l’évaluation réalisée par Méandres (score global pondéré calculé afin de refléter la qualité théorique de l’accessibilité à la marche), à partir des destinations suivantes :</p>
+      <ul>
+        <li>Épiceries</li>
+        <li>Pharmacies</li>
+        <li>Écoles</li>
+        <li>Garderies / CPE</li>
+        <li>Bibliothèques</li>
+        <li>Parcs</li>
+      </ul>
+
+      <h3>Taux de voirie marchable pondéré</h3>
+      <p>Taux de la voirie considéré comme marchable dans un rayon de 800 mètres à partir du centre de chaque hexagone, selon le réseau de marche. Basé sur la moyenne des rapports [longueur de voie marchable]/[longueur du réseau accessible] pour les voies locales et structurantes. Les voies considérées comme marchables sont les voies limitées à moins de 30 km/h et les voies dotées de trottoirs. Un coefficient de 0,7 est appliqué aux voies dotées d’un seul trottoir.</p>
+
+      <h3>Taux de ménages locataires</h3>
+      <p>Taux de ménages locataires dans l’aire de diffusion englobant ou couvrant majoritairement l’hexagone, à partir des données du recensement 2021.</p>
+
+      <h3>Diversité de logement selon le nombre de chambres</h3>
+      <p>Sur- ou sous-représentation de certaines catégories de logements en fonction du nombre de chambres dans l’aire de diffusion englobant ou couvrant majoritairement l’hexagone, à partir des données du recensement 2021.</p>
+
+      <h3>Superficie de parc « frais » à 400 m</h3>
+      <p>Plus grande superficie couverte par une classe de chaleur 1 à 3 (îlot de fraîcheur) au sein du ou des parcs accessibles à moins de 400 m (selon le réseau de marche), à partir des données d’îlots de fraîcheur et de chaleur de l’INSPQ et des parcs recensés par Méandres.</p>
+
+      <h3>Îlots de chaleur urbains</h3>
+      <p>Part de la superficie de l’hexagone couverte par une classe de chaleur 8 ou 9 (îlot de chaleur), à partir des données d’îlots de fraîcheur et de chaleur de l’INSPQ.</p>
+    </div>
+    <div class="modal-footer">
+      <button id="btn-close-info" type="button">Explorer la carte</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const modal = document.getElementById('info-modal-backdrop');
+    const openBtn = document.getElementById('btn-open-info');
+    const closeBtn = document.getElementById('btn-close-info');
+    const closeX = document.getElementById('btn-x-info');
+
+    function openModal() { modal.classList.remove('hidden'); }
+    function closeModal() { modal.classList.add('hidden'); }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    closeX.addEventListener('click', closeModal);
+
+    // Fermer en cliquant sur le fond sombre autour de la boîte
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+  })();
+</script>
+
     </body>
 </html>

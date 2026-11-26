@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_lotsdechaleursurbains_3 = function(feature, resolution){
+var style_lotsdechaleursurbains_4 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -23,13 +23,13 @@ var style_lotsdechaleursurbains_3 = function(feature, resolution){
         labelText = String("");
     }
     
-        function rules_lotsdechaleursurbains_3(feature, value) {
+        function rules_lotsdechaleursurbains_4(feature, value) {
             var context = {
                 feature: feature,
                 variables: {}
             };
             // Start of if blocks and style check logic
-            if (exp_lotsdechaleursurbains_3rule0_eval_expression(context)) {
+            if (exp_lotsdechaleursurbains_4rule0_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(145,195,106,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
@@ -37,7 +37,7 @@ var style_lotsdechaleursurbains_3 = function(feature, resolution){
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_lotsdechaleursurbains_3rule1_eval_expression(context)) {
+                    else if (exp_lotsdechaleursurbains_4rule1_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(245,207,0,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
@@ -45,7 +45,7 @@ var style_lotsdechaleursurbains_3 = function(feature, resolution){
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_lotsdechaleursurbains_3rule2_eval_expression(context)) {
+                    else if (exp_lotsdechaleursurbains_4rule2_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(255,160,37,0.8)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
@@ -53,17 +53,9 @@ var style_lotsdechaleursurbains_3 = function(feature, resolution){
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
     })];
                     }
-                    else if (exp_lotsdechaleursurbains_3rule3_eval_expression(context)) {
+                    else if (exp_lotsdechaleursurbains_4rule3_eval_expression(context)) {
                       return [ new ol.style.Style({
         fill: new ol.style.Fill({color: 'rgba(255,57,57,0.8)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-                    }
-                    else if (exp_lotsdechaleursurbains_3rule4_eval_expression(context)) {
-                      return [ new ol.style.Style({
-        fill: new ol.style.Fill({color: 'rgba(255,255,255,0.5647058823529413)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
@@ -73,7 +65,7 @@ var style_lotsdechaleursurbains_3 = function(feature, resolution){
                 return [];
             }
         }
-        var style = rules_lotsdechaleursurbains_3(feature, value);
+        var style = rules_lotsdechaleursurbains_4(feature, value);
         ;
 
     return style;
